@@ -1,7 +1,7 @@
-from utils import get_pairs_from_paths_UAV, get_pairs_from_paths_AERIAL, Unet_DataGenerator, focal_loss
+from U_Net_utils import get_pairs_from_paths_UAV, get_pairs_from_paths_AERIAL, Unet_DataGenerator, focal_loss
 from tensorflow.keras.metrics import Precision, Recall
 from tensorflow.keras.callbacks import ModelCheckpoint
-from model import DenseUnet
+from U_Net_model import DenseUnet
 
 # Model params
 INPUT_SHAPE = (512, 512, 3)
