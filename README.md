@@ -54,4 +54,5 @@ cd Small-objects-segmentation
 ```
 
 **Training:**
+
 Set config variables in `modelname/config.py` and execute `modelname/modelname_train.py`
