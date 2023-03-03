@@ -27,6 +27,6 @@ LOAD_WEIGHTS = False  # = True if you want to resume training or just load weigh
 WEIGTH_PATH_LOAD = "/kaggle/input/unet-w/Unet-FCE-30.h5"
 
 # Weights folder (save)
-WEIGTH_FOLDER_SAVE = ""
+WEIGTH_FOLDER_SAVE = "/kaggle/working/"
 
 
