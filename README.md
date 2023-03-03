@@ -30,9 +30,13 @@ This dataset contains 4 folders: *crops_with_target*, *masks_with_target* and *i
 
 This dataset has 2 folders: *images* and *masks*. Mask format is same as in UAV Dataset.
 
+## Project overview
 
-Set pathes in train files and change compile params
+Project contains folders named as corresponding model implementation. *utils.py* has all essential functions and classes for data providing and training (collect image-mask pairs from path, data generators and loss functions). *model.py* has model building functions. *train.py* has a script for training and weights saving. *config.py* has config parameters for model building and training such as pathes for dataset, weights etc.
 
-Datasets links:
-AERIAL  https://www.kaggle.com/datasets/llpukojluct/aerial
-UAV  https://www.kaggle.com/datasets/llpukojluct/drone-detection-dataset
+## Data providing
+
+For *get_pairs_from_path_UAV* you need to provide pathes for images and masks with targets and pathes for all images and targets.
+
+For *get_pairs_from_path_AERIAL* you need to provide pathes for images and masks
+
