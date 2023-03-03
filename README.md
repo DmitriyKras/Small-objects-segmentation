@@ -59,7 +59,7 @@ Set config variables in `modelname/config.py` and execute `modelname/modelname_t
 
 **Visualize predictions**
 
-Set path to image for predictions in `modelname/modelname_predict.py`, set mode "mask" if you want to see segmented mask or "bbox" if you want to see bounding boxes
+Set path to image for predictions in `modelname/modelname_predict.py`, set mode "mask" if you want to see segmented mask or "bbox" if you want to see bounding boxes and then execute file
 
 **Some examples of predictions below**
 
