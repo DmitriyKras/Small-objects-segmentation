@@ -220,9 +220,9 @@ def build_pyramid_pooling_module(res, input_shape):
     return res
   
   
-def CPA_net(nb_classes, input_shape):
+def CPA_net(input_shape, nb_classes):
     
-    inp = Input((input_shape[0], input_shape[1], 3))
+    inp = Input(input_shape)
 
     res = ResNet_with_different_level_features(inp)
 
