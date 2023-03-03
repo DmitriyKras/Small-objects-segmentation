@@ -6,7 +6,7 @@ import config
 
 
 # Build CPA model
-CPA = CPA_net(N_CLASSES, INPUT_SHAPE)
+CPA = CPA_net(INPUT_SHAPE, N_CLASSES)
 
 # Set train and validation generators
 if DATASET == "UAV":
