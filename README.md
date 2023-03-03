@@ -45,7 +45,8 @@ For *get_pairs_from_path_AERIAL* you need to provide pathes for images and masks
 **Dependencies:**
 
 TensorFlow = 2.11.0\
-OpenCV = 4.6.0
+OpenCV = 4.6.0\
+scikit-image = 0.19.3
 
 **Installation:**
 ```
