@@ -40,7 +40,7 @@ For *get_pairs_from_path_UAV* you need to provide pathes for images and masks wi
 
 For *get_pairs_from_path_AERIAL* you need to provide pathes for images and masks
 
-# Dependancies and usage
+## Dependancies and usage
 
 **Main dependencies:**
 
@@ -53,3 +53,5 @@ git clone https://github.com/DmitriyKras/Small-objects-segmentation.git
 cd Small-objects-segmentation
 ```
 
+**Training:**
+Set config variables in `modelname/config.py` and execute `modelname/modelname_train.py`
