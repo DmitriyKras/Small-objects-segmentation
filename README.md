@@ -11,6 +11,8 @@ This project contains implementations of different semantic segmentation models 
 
 [Dogfight: Detecting Drones from Drones Videos](https://arxiv.org/abs/2103.17242)
 
+[Fully Convolutional Networks for Semantic Segmentation](https://arxiv.org/abs/1411.4038)
+
 [PSP-Net repo](https://github.com/mwaseema/image-segmentation-keras-implementation)
 
 
