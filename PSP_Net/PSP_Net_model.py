@@ -95,7 +95,7 @@ class Interp(Layer):
         return config
     
 
-def ResNet_with_different_level_features(inp):
+def ResNet50(inp):
     
     # inp - Input layer
     layers_to_merge = []  # this layers will be concatenated
@@ -224,7 +224,7 @@ def CPA_net(input_shape, nb_classes):
     
     inp = Input(input_shape)
 
-    res = ResNet_with_different_level_features(inp)
+    res = ResNet50(inp)
 
     psp = build_pyramid_pooling_module(res, input_shape)
 
