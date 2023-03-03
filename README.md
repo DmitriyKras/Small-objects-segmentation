@@ -56,3 +56,14 @@ cd Small-objects-segmentation
 **Training:**
 
 Set config variables in `modelname/config.py` and execute `modelname/modelname_train.py`
+
+**Visualize predictions**
+
+Set path to image for predictions in `modelname/modelname_predict.py`, set mode "mask" if you want to see segmented mask or "bbox" if you want to see bounding boxes
+
+**Some examples of predictions below**
+
+![Example 1](/predictions_examples/example1.png)
+![Example 2](/predictions_examples/example2.png)
+
+![Example 2](/predictions_examples/example3.png)
