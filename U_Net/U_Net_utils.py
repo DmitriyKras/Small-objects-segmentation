@@ -19,7 +19,7 @@ def get_pairs_from_paths_AERIAL(images_path, segs_path, val_size=0.2):
     return train_test_split(pairs, test_size=val_size)
   
   
-  def get_pairs_from_paths_UAV(images_path, segs_path, images_path_all, segs_path_all,
+def get_pairs_from_paths_UAV(images_path, segs_path, images_path_all, segs_path_all,
                          val_size=0.2):
     images = os.listdir(images_path)
     segmentations = os.listdir(segs_path)
@@ -37,7 +37,7 @@ def get_pairs_from_paths_AERIAL(images_path, segs_path, val_size=0.2):
     return train_test_split(pairs, test_size=val_size)
   
   
-  class Unet_DataGenerator(tf.keras.utils.Sequence):
+class Unet_DataGenerator(tf.keras.utils.Sequence):
     """
     Data generator for CPAnet 
     yields X, main_output
