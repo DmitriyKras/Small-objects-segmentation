@@ -9,10 +9,10 @@ import config
 Unet = DenseUnet(INPUT_SHAPE, N_CLASSES)
 
 # Set train and validation generators
-if DATASET == "UAV"
+if DATASET == "UAV":
     train_pairs, val_pairs = get_pairs_from_paths_UAV(IMAGE_PATH_UAV, MASK_PATH_UAV, 
                                                   IMAGE_PATH_ALL, MASK_PATH_ALL)
-if DATASET == "AERIAL"
+if DATASET == "AERIAL":
     train_pairs, val_pairs = get_pairs_from_paths_AERIAL(IMAGE_PATH_AERIAL, MASK_PATH_AERIAL)
 
 # Set up generators
@@ -21,11 +21,16 @@ val_gen = Unet_DataGenerator(val_pairs, INPUT_SHAPE[:2], N_CLASSES, 400, BATCH_S
 
 
 # Compile model and load weights
-Unet.compile(loss=focal_loss,
-            optimizer="adam",
+if LOSS == "CCE":
+    loss = "categorical_crossentropy"
+if LOSS == "FCE":
+    loss = focal_loss
+
+Unet.compile(loss=loss,
+            optimizer=OPTIMIZER,
             metrics=[Precision(class_id = 1), Recall(class_id = 1)])
 
-if LOAD_WEIGHTS
+if LOAD_WEIGHTS:
     Unet.load_weights(WEIGTH_PATH_LOAD)
 
 # Set model checkpoint
