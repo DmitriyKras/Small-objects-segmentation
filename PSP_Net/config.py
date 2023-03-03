@@ -5,7 +5,7 @@ EPOCHS = 20
 OPTIMIZER = "adam"
 STEPS_PER_EPOCH = 1000
 N_CLASSES = 2
-
+LOSS = "CCE"  # CCE for categorical crossentropy, FCE for focal crossentropy, FCE_IoU for focal loss with IoU
 
 # Datasets pathes examples (choose dataset)
 DATASET = "AERIAL"  # = "UAV"
