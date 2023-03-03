@@ -39,4 +39,3 @@ Project contains folders named as corresponding model implementation. *utils.py*
 For *get_pairs_from_path_UAV* you need to provide pathes for images and masks with targets and pathes for all images and targets.
 
 For *get_pairs_from_path_AERIAL* you need to provide pathes for images and masks
-
