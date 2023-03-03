@@ -2,43 +2,33 @@ from PSP_Net_utils import get_pairs_from_paths_UAV, get_pairs_from_paths_AERIAL,
 from PSP_Net_model import CPA_net
 from tensorflow.keras.metrics import Precision, Recall, IoU
 from tensorflow.keras.callbacks import ModelCheckpoint
+import config
 
-
-# Model params
-INPUT_SHAPE = (473, 473)
-BATCH_SIZE = 4
-EPOCHS = 10
-OPTIMIZER = SGD
-STEPS_PER_EPOCH = 1000
-N_CLASSES = 2
-
-# UAV Dataset pathes
-IMAGE_PATH_UAV = "/kaggle/input/drone-detection-dataset/crops_with_target/crops_with_target"
-MASK_PATH_UAV = "/kaggle/input/drone-detection-dataset/masks_with_target/masks_with_target"
-
-IMAGE_PATH_ALL = "/kaggle/input/drone-detection-dataset/images_cropped/images_cropped"
-MASK_PATH_ALL = "/kaggle/input/drone-detection-dataset/masks_cropped/masks_cropped"
-
-# AERIAL Dataset pathes
-IMAGE_PATH_AERIAL = "/kaggle/input/drone-detection-dataset/crops_with_target/crops_with_target"
-MASK_PATH_AERIAL = "/kaggle/input/drone-detection-dataset/masks_with_target/masks_with_target"
-
-# Weight path
-WEIGTH_PATH = "/kaggle/input/cpa-weights/UAV-CPA-CCE-20.h5"
 
 # Build CPA model
-CPA = CPA_net(N_CLASSES, 50, INPUT_SHAPE, activation='softmax')
+CPA = CPA_net(N_CLASSES, INPUT_SHAPE)
 
 # Set train and validation generators
-train_pairs, val_pairs = get_pairs_from_paths_UAV(IMAGE_PATH_UAV, MASK_PATH_UAV, 
+if DATASET == "UAV":
+    train_pairs, val_pairs = get_pairs_from_paths_UAV(IMAGE_PATH_UAV, MASK_PATH_UAV, 
                                                   IMAGE_PATH_ALL, MASK_PATH_ALL)
-#train_pairs, val_pairs = get_pairs_from_paths_AERIAL(IMAGE_PATH_AERIAL, MASK_PATH_AERIAL)
+if DATASET == "AERIAL":
+    train_pairs, val_pairs = get_pairs_from_paths_AERIAL(IMAGE_PATH_AERIAL, MASK_PATH_AERIAL)
+
+# Set up generators
 train_gen = CPA_DataGenerator(train_pairs, INPUT_SHAPE[:2], N_CLASSES, STEPS_PER_EPOCH, BATCH_SIZE)
 val_gen = CPA_DataGenerator(val_pairs, INPUT_SHAPE[:2], N_CLASSES, 400, BATCH_SIZE)
 
 # Compile model and load weights
+if LOSS == "CCE":
+    loss = "categorical_crossentropy"
+if LOSS == "FCE":
+    loss = focal_loss
+if LOSS == "FCE_IoU":
+    loss = categorical_focal_loss_with_iou
+
 CPA.compile(loss={
-            "main_output_activation": "categorical_crossentropy",
+            "main_output_activation": loss,
             "mask_output_activation": smooth_l1_loss,
         },
             optimizer="adam",
@@ -47,8 +37,9 @@ CPA.compile(loss={
 
 CPA.load_weights(WEIGTH_PATH)
 
-CHECKPOINT_PATH = "/kaggle/working/CPA-CCE-{epoch:02d}.h5"
-checkpoint = ModelCheckpoint(CHECKPOINT_PATH, save_weights_only=True, verbose=1, period=5)
+# Set model checkpoint
+CHECPOINT_PATH = WEIGTH_FOLDER_SAVE + "CPA_net-{epoch:02d}.h5"
+checkpoint = ModelCheckpoint(CHECPOINT_PATH, save_weights_only=True, verbose=1, period=5)
 callbacks_list = [checkpoint]
 
 # Train model
