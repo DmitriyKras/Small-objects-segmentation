@@ -143,9 +143,9 @@ def ResNet50(inp):
     layers_to_merge.append(res)
 
     # 4_1 - 4_6
-    res = residual_short(res, 4, pad=2, lvl=4, sub_lvl=1)
+    res = residual_short(res, 4, pad=2)
     for i in range(5):
-        res = residual_empty(res, 4, pad=2, lvl=4, sub_lvl=i + 2)
+        res = residual_empty(res, 4, pad=2)
 
     layers_to_merge.append(res)
 
