@@ -2,7 +2,7 @@ from PSP_Net_utils import get_pairs_from_paths_UAV, get_pairs_from_paths_AERIAL,
 from PSP_Net_model import CPA_net
 from tensorflow.keras.metrics import Precision, Recall, IoU
 from tensorflow.keras.callbacks import ModelCheckpoint
-import config
+from config import *
 
 
 # Build CPA model

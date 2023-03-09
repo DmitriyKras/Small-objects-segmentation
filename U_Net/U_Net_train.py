@@ -2,7 +2,7 @@ from U_Net_utils import get_pairs_from_paths_UAV, get_pairs_from_paths_AERIAL, U
 from tensorflow.keras.metrics import Precision, Recall
 from tensorflow.keras.callbacks import ModelCheckpoint
 from U_Net_model import DenseUnet
-import config
+from config import *
 
 
 # Build Unet model
