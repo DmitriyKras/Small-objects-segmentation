@@ -79,9 +79,14 @@ def conv_block(input_tensor, kernel_size, filters, stage, block, strides=(2, 2))
 def ResNet50(input_shape, refinenet=False, deeplab=False):
     """Instantiates the ResNet50 architecture.
     # Arguments
-        input_shape: tuple of input image shape with chanels
+    input_shape: tuple 
+        Input image shape with chanels
+    refinenet: bool, optional
+        Is this ResNet50 used in RefineNet
+    deeplab: bool, optional
+        Is this ResNet50 used in DeepLabV3
     # Returns
-        A Keras model instance.
+        A tensorflow.keras.Model instance of ResNet50
     """
     img_input = Input(input_shape)
 
@@ -101,6 +106,9 @@ def ResNet50(input_shape, refinenet=False, deeplab=False):
     if refinenet:
         out.append(x)
 
+    if deeplab:
+        out.append(x)
+
     x = conv_block(x, 3, [128, 128, 512], stage=3, block='a')
     x = identity_block(x, 3, [128, 128, 512], stage=3, block='b')
     x = identity_block(x, 3, [128, 128, 512], stage=3, block='c')
@@ -117,9 +125,6 @@ def ResNet50(input_shape, refinenet=False, deeplab=False):
     x = identity_block(x, 3, [256, 256, 1024], stage=4, block='f')
 
     if refinenet:
-        out.append(x)
-
-    if deeplab:
         out.append(x)
 
     x = conv_block(x, 3, [512, 512, 2048], stage=5, block='a')
