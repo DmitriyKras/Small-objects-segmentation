@@ -139,11 +139,11 @@ def ResNet50(input_shape, refinenet=False, deeplab=False):
 def RCU(inputs, n_filters=256, kernel_size=3, name=''):
     """
     A local residual convolutional unit
-    Arguments:
+    # Arguments:
       inputs: The input tensor
       n_filters: Number of output feature maps for each conv
       kernel_size: Size of convolution kernel
-    Returns:
+    # Returns:
       Output of local residual convolutional unit
     """
     x = Activation("relu", name=name+'relu1')(inputs)
@@ -162,10 +162,10 @@ def CRP(inputs, n_filters=256, name=''):
     of one max-pooling layer and one convolution layer. 
     The output feature maps of all pooling blocks are 
     summed.
-    Arguments:
+    # Arguments:
       inputs: The input tensor
       n_filters: Number of output feature maps for each conv
-    Returns:
+    # Returns:
       Double-pooled feature maps
     """
     
@@ -197,12 +197,12 @@ def MRF(high_input=None, low_inputs=None, n_filters=256,name=''):
     (the smallest one among the inputs), and then up-samples all (smaller) 
     feature maps to the largest resolution of the inputs. Finally, all features 
     maps are summed.
-    Arguments:
+    # Arguments:
       high_input: The input tensor that have the highest resolution
       low_inputs: List of the input tensors that have lower resolution in order
       of decreasing resolution
       n_filters: Number of output feature maps for each conv
-    Returns:
+    # Returns:
       Fused feature maps at higher resolution
     """
     if low_inputs is None:
@@ -228,11 +228,11 @@ def RefineBlock(high_input=None, low_inputs=None, block=0):
     A RefineNet Block which combines together the ResidualConvUnits (RCU),
     Multi-Resolution Fusion (MRF) and then gets large-scale context with 
     the ResidualConvUnit.
-    Arguments:
+    # Arguments:
       high_input: The input tensor that have the higher resolution
       low_inputs: List of the input tensors that have lower resolution in order
       of decreasing resolution
-    Returns:
+    # Returns:
       RefineNet block for a single path i.e one resolution
     """
     high_n = high_input.shape[-1]
@@ -262,7 +262,7 @@ def RefineNet(input_shape: tuple, nb_classes: int, variant="single") -> tf.keras
     """
     Build RefineNet architecture for semantic segmentation based
     on ResNet50
-    Arguments:
+    # Arguments:
     input_shape : tuple
         Shape of input tensor
     nb_classes : int
@@ -270,7 +270,7 @@ def RefineNet(input_shape: tuple, nb_classes: int, variant="single") -> tf.keras
     type : str, optional
         Type of returned RefineNet. Supported types: single, 2-cascaded,
         4-cascaded
-    Returns:
+    # Returns:
         tf.keras.Model of RefineNet
     """
     res = ResNet50(input_shape, refinenet=True)  # build resnet50
