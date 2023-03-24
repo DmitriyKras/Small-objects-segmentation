@@ -15,6 +15,10 @@ This project contains implementations of different semantic segmentation models 
 
 [PSP-Net repo](https://github.com/mwaseema/image-segmentation-keras-implementation)
 
+[RefineNet: Multi-Path Refinement Networks for High-Resolution Semantic Segmentation](https://arxiv.org/abs/1611.06612)
+
+[Rethinking Atrous Convolution for Semantic Image Segmentation](https://arxiv.org/abs/1706.05587v3)
+
 
 ## Datasets overview
 
@@ -68,7 +72,6 @@ Set path to image for predictions in `modelname/modelname_predict.py`, set mode 
 
 ![Example 1](/predictions_examples/example1.png)
 ![Example 2](/predictions_examples/example2.png)
-
 ![Example 2](/predictions_examples/example3.png)
 
 ## Evaluation
@@ -77,11 +80,11 @@ Because of small amount of test data different augmentation methods were apllied
 camera-like augmentation (blur, motion blur and additive noise). The impact on perfomance of each augmentation type provided on ROC curve figures.
 
 
-**Without augmentation**\
-![Without augmentation](/test_results/ROC_curves_test.png)\
-**Affine augmentation**\
-![Affine augmentation](/test_results/ROC_curves_test_affine.png)\
-**Weather-like augmentation**\
-![Weather augmentation](/test_results/ROC_curves_test_weather.png)\
-**Camera-like augmentation**\
-![Camera augmentation](/test_results/ROC_curves_test_camera.png)\
+**Without augmentation**
+![Without augmentation](/test_results/ROC_curves_test.png)
+**Affine augmentation**
+![Affine augmentation](/test_results/ROC_curves_test_affine.png)
+**Weather-like augmentation**
+![Weather augmentation](/test_results/ROC_curves_test_weather.png)
+**Camera-like augmentation**
+![Camera augmentation](/test_results/ROC_curves_test_camera.png)
