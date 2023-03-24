@@ -70,3 +70,18 @@ Set path to image for predictions in `modelname/modelname_predict.py`, set mode 
 ![Example 2](/predictions_examples/example2.png)
 
 ![Example 2](/predictions_examples/example3.png)
+
+## Evaluation
+U-Net, PSP-Net, Refine-Net and DeepLabV3 were trained on mixed dataset and evaluated on 39 manualy collected and labeled images. 
+Because of small amount of test data different augmentation methods were apllied with *imgaug*: affine augmentation (flip and rotation), weather-like augmentation (fog, rain, snow) and
+camera-like augmentation (blur, motion blur and additive noise). The impact on perfomance of each augmentation type provided on ROC curve figures.
+
+
+**Without augmentation**\
+![Without augmentation](/test_results/ROC_curves_test.png)\
+**Affine augmentation**\
+![Affine augmentation](/test_results/ROC_curves_test_affine.png)\
+**Weather-like augmentation**\
+![Weather augmentation](/test_results/ROC_curves_test_weather.png)\
+**Camera-like augmentation**\
+![Camera augmentation](/test_results/ROC_curves_test_camera.png)\
